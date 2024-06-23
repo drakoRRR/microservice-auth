@@ -5,8 +5,8 @@ from src.auth.hashing import Hasher
 from jose import jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.auth.config import AuthConfig
-from src.config import Config
+from src.auth.config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM
+from src.config import SECRET_KEY
 from src.dals import UserDAL
 from src.models import User
 
@@ -54,10 +54,10 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
         expire = datetime.utcnow() + expires_delta
     else:
         expire = datetime.utcnow() + timedelta(
-            minutes=AuthConfig().ACCESS_TOKEN_EXPIRE_MINUTES
+            minutes=ACCESS_TOKEN_EXPIRE_MINUTES
         )
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(
-        to_encode, Config().SECRET_KEY, algorithm=AuthConfig().ALGORITHM
+        to_encode, SECRET_KEY, algorithm=ALGORITHM
     )
     return encoded_jwt

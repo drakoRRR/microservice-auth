@@ -7,13 +7,15 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ..:/code
+      - .:/app
     networks:
       - backend-network
     depends_on:
       - db
+    env_file: .env
 
   db:
+    container_name: "db"
     image: postgres:13-alpine
     restart: always
     volumes:

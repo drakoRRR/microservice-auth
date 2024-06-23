@@ -3,12 +3,12 @@ from fastapi import APIRouter, FastAPI
 
 from auth.login_router import login_router
 from auth.router import auth_router
-from src.config import Config
+from src.config import APP_PORT, DEBUG
 
 
 def create_app():
     app = FastAPI(
-        debug=Config().DEBUG,
+        debug=DEBUG,
         docs_url="/api/docs/",
         title="Banking App"
     )
@@ -23,4 +23,4 @@ main_api_router.include_router(login_router, prefix="/login", tags=["login"])
 fastapi_app.include_router(main_api_router)
 
 if __name__ == "__main__":
-    uvicorn.run(fastapi_app, host="0.0.0.0", port=Config.APP_PORT)
+    uvicorn.run(fastapi_app, host="0.0.0.0", port=APP_PORT)

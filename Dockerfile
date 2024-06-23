@@ -15,8 +15,11 @@ COPY requirements/dev.txt ./requirements/dev.txt
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r /requirements/dev.txt
 
+WORKDIR /src
+ENV PYTHONPATH=/src
+
 EXPOSE 8000
 
-COPY . ./
+COPY . .
 
 CMD ["python", "src/main.py"]
