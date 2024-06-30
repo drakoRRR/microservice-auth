@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.auth.config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM
 from src.config import SECRET_KEY
-from src.dals import UserDAL
+from src.auth.dals import UserDAL
 from src.auth.models import User
 
 from .schemas import ShowUser, UserCreate

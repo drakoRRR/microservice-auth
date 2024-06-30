@@ -15,7 +15,8 @@ logger = getLogger(__name__)
 @auth_router.post("/", status_code=status.HTTP_201_CREATED, response_model=ShowUser)
 async def create_user(body: UserCreate, db: AsyncSession = Depends(get_db)):
     try:
-        await _create_new_user(body, db)
+        new_user = await _create_new_user(body, db)
+        return new_user
     except IntegrityError as err:
         logger.error(err)
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=f"Database error {err}")
