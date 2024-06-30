@@ -7,13 +7,12 @@ class TunedModel(BaseModel):
     class Config:
         """tells pydantic to convert even non dict obj to json"""
 
-        orm_mode = True
+        from_attributes = True
 
 
 class ShowUser(TunedModel):
     user_id: uuid.UUID
-    name: str
-    surname: str
+    user_name: str
     email: EmailStr
     is_active: bool
 

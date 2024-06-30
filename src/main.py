@@ -1,8 +1,8 @@
 import uvicorn
 from fastapi import APIRouter, FastAPI
 
-from auth.login_router import login_router
-from auth.router import auth_router
+from src.auth.login_router import login_router
+from src.auth.router import auth_router
 from src.config import APP_PORT, DEBUG
 
 

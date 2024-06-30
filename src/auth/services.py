@@ -23,7 +23,7 @@ async def _create_new_user(body: UserCreate, session) -> ShowUser:
         )
         return ShowUser(
             user_id=user.user_id,
-            username=user.username,
+            user_name=user.user_name,
             email=user.email,
             is_active=user.is_active,
         )
