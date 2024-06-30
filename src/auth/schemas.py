@@ -20,7 +20,7 @@ class ShowUser(TunedModel):
 
 class UserCreate(BaseModel):
     name: str
-    username: str
+    user_name: str
     email: EmailStr
     password: str
 

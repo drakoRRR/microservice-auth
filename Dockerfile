@@ -10,16 +10,16 @@ RUN apk update && apk add --no-cache \
     libffi-dev \
     openssl-dev
 
+WORKDIR /app
 
 COPY requirements/dev.txt ./requirements/dev.txt
 RUN pip install --no-cache-dir --upgrade pip
-RUN pip install --no-cache-dir -r /requirements/dev.txt
-
-WORKDIR /src
-ENV PYTHONPATH=/src
-
-EXPOSE 8000
+RUN pip install --no-cache-dir -r requirements/dev.txt
 
 COPY . .
+
+ENV PYTHONPATH=/app
+
+EXPOSE 8000
 
 CMD ["python", "src/main.py"]

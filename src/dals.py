@@ -4,7 +4,7 @@ from uuid import UUID
 from sqlalchemy import and_, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.models import User
+from src.auth.models import User
 
 
 class UserDAL:
@@ -15,12 +15,12 @@ class UserDAL:
 
     async def create_user(
         self,
-        username: str,
+        user_name: str,
         email: str,
         hashed_password: str,
     ) -> User:
         new_user = User(
-            username=username,
+            user_name=user_name,
             email=email,
             hashed_password=hashed_password,
         )

@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.auth.config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM
 from src.config import SECRET_KEY
 from src.dals import UserDAL
-from src.models import User
+from src.auth.models import User
 
 from .schemas import ShowUser, UserCreate
 
@@ -17,7 +17,7 @@ async def _create_new_user(body: UserCreate, session) -> ShowUser:
     async with session.begin():
         user_dal = UserDAL(session)
         user = await user_dal.create_user(
-            username=body.username,
+            user_name=body.user_name,
             email=body.email,
             hashed_password=Hasher.get_password_hash(body.password),
         )
