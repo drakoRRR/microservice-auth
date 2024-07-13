@@ -14,3 +14,4 @@
 * Ensure the application can scale with user demand
 # CI/CD:
 * Implement continuous integration and continuous deployment using GitHub Actions
+
