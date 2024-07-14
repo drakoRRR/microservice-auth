@@ -1,12 +1,12 @@
 from logging import getLogger
 
-from fastapi import APIRouter, Depends, status, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.database import get_db
-from src.auth.schemas import UserCreate, ShowUser
+from src.auth.schemas import ShowUser, UserCreate
 from src.auth.services import _create_new_user
+from src.database import get_db
 
 auth_router = APIRouter()
 

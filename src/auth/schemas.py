@@ -1,4 +1,5 @@
 import uuid
+from typing import Optional
 
 from pydantic import BaseModel, EmailStr
 
@@ -17,14 +18,23 @@ class ShowUser(TunedModel):
     is_active: bool
 
 
-class UserCreate(BaseModel):
+class UserCreate(TunedModel):
     name: str
     user_name: str
     email: EmailStr
     password: str
 
 
-class Token(BaseModel):
+class Token(TunedModel):
     access_token: str
     token_type: str
 
+
+class ChangePassword(TunedModel):
+    old_password: str
+    new_password: str
+
+
+class TokenData(BaseModel):
+    sub: Optional[str] = None
+    exp: Optional[int] = None

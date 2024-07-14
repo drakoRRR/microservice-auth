@@ -21,3 +21,4 @@
 ```docker-compose exec backend alembic upgrade head```
 ## To create migrations 
 ```alembic revision --autogenerate -m "name of migration"```
+

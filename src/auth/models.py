@@ -5,6 +5,7 @@ from sqlalchemy.dialects.postgresql import UUID
 
 from src.database import Base
 
+
 class User(Base):
     """User model representing users in the application."""
     __tablename__ = "user"
@@ -16,3 +17,11 @@ class User(Base):
     is_active = Column(Boolean(), default=True)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+
+
+class TokenBlacklist(Base):
+    """Token blacklist model representing tokens in the application."""
+    __tablename__ = "token_blacklist"
+
+    token = Column(String, primary_key=True, index=True)
+    blacklisted_on = Column(DateTime, default=func.now())
