@@ -65,3 +65,9 @@ class UserDAL:
         update_user_id_row = res.fetchone()
         if update_user_id_row is not None:
             return update_user_id_row[0]
+
+    async def update_password(self, user: User, new_hashed_password: str):
+        user.hashed_password = new_hashed_password
+        self.db_session.add(user)
+        await self.db_session.commit()
+        return user
