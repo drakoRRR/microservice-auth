@@ -14,3 +14,11 @@
 * Ensure the application can scale with user demand
 # CI/CD:
 * Implement continuous integration and continuous deployment using GitHub Actions
+
+----------------------------------------
+# Alembic
+## To run migrations 
+```docker-compose exec backend alembic upgrade head```
+## To create migrations 
+```alembic revision --autogenerate -m "name of migration"```
+
